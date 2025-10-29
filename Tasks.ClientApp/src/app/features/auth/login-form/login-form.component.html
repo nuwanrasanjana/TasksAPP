@@ -1,0 +1,39 @@
+<form 
+    [formGroup]="loginForm" 
+    (ngSubmit)="onSubmit()" 
+    class="form-group mt-5"
+>
+    <input 
+        type="email" 
+        formControlName="email" 
+        class="form-control mt-5"
+    >
+    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        <div *ngIf="loginForm.get('email')?.errors?.['required']">
+            <p class="text-error">Email is required</p>
+        </div>
+        <div *ngIf="loginForm.get('email')?.errors?.['email']" class="text-error">
+            <p class="text-error"></p>Email should be valid
+        </div>
+    </div>
+    <input 
+        type="password" 
+        formControlName="password" 
+        class="form-control mt-5"
+    >
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        <div *ngIf="loginForm.get('password')?.errors?.['required']">
+            <p class="text-error">Password is required</p>
+        </div>
+        <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            <p class="text-error">Minimum 8 charactors needed</p>
+        </div>
+    </div>
+    <button 
+        type="submit" 
+        class="btn btn-primary mt-5" 
+        [disabled]="loginForm.invalid"
+    >
+        submit
+    </button>
+</form>

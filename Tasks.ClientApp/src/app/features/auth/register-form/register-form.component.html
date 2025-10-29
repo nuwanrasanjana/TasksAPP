@@ -1,0 +1,55 @@
+<form 
+    [formGroup]="registerForm" 
+    (ngSubmit)="onSubmit()" 
+    class="form-group"
+>
+    <input 
+        type="email" 
+        formControlName="email" 
+        class="form-control mt-5"
+    >
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        <div *ngIf="registerForm.get('email')?.errors?.['required']">
+            <p class="text-error">Email is required</p>
+        </div>
+        <div *ngIf="registerForm.get('email')?.errors?.['email']">
+            <p class="text-error">Email should be valid</p>
+        </div>
+    </div>
+    <input 
+        type="password" 
+        formControlName="password" 
+        class="form-control mt-5"
+    >
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        <div *ngIf="registerForm.get('password')?.errors?.['required']">
+            <p class="text-error">This field is required</p>
+        </div>
+        <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+            <p class="text-error">Minimum 8 charactors needed</p>
+        </div>
+    </div>
+    <input 
+        type="password" 
+        formControlName="resetPassword" 
+        class="form-control mt-5"
+    >
+    <div *ngIf="registerForm.get('resetPassword')?.invalid && registerForm.get('resetPassword')?.touched">
+        <div *ngIf="registerForm.get('resetPassword')?.errors?.['required']">
+            <p class="text-error">This field is required</p>
+        </div>
+        <div *ngIf="registerForm.get('resetPassword')?.errors?.['minlength']">
+            <p class="text-error">Minimum 8 charactors needed</p>
+        </div>    
+    </div>
+    <div *ngIf="registerForm.errors?.['passwordMismatch']">
+        <p class="text-error">MPassword and resetpassword should match</p>
+    </div>
+    <button 
+        type="submit" 
+        class="btn btn-primary mt-5" 
+        [disabled]="registerForm.invalid"
+    >
+        submit
+    </button>
+</form>

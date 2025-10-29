@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <!-- <div *ngIf="showSuccessAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+            Success!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div *ngIf="showErrorAlert" class="alert alert-danger" role="alert">
+            Try again!
+            </div> -->
+            <div *ngIf="showSuccessAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+            Success!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <div *ngIf="showErrorAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+            Success!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-sm-5">
+            <app-task-list 
+                [tasks]="tasks" 
+                (editTask)="onTaskSelected($event)" 
+                (refresh)="loadTasks()"
+                (successAlert)="showAlert($event)"
+            >
+            </app-task-list>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <app-task-form 
+                [task]="selectedTask" 
+                (taskSaved)="onTaskSaved()"
+                (successAlert)="showAlert($event)"
+            >
+            </app-task-form>
+
+        </div>
+    </div>
+</div>

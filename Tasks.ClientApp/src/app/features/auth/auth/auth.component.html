@@ -1,0 +1,21 @@
+<div class="auth-container container">
+    <div class="col-sm-4">
+
+    </div>
+    <div class="col-sm-4">
+        <h2 class="mt-5">{{showLogin ? 'Login' : 'Register'}}</h2>
+
+        <app-login-form *ngIf="showLogin"></app-login-form>
+        <app-register-form *ngIf="!showLogin"></app-register-form>
+
+        <div class="toggle-link">
+            <a href="#" (click)="togleForm()">
+                {{showLogin ? 'New user? Register here' : 'Already have an account? Login here'}}
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+</div>
+

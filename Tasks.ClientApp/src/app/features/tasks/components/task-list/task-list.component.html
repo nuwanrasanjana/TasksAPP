@@ -1,0 +1,19 @@
+<h2>Task List</h2>
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of tasks">
+            <td>{{task.description}}</td>
+            <td>{{task.isCompleted ? 'Completed' : 'To do'}}</td>
+            <td><i class="bi bi-pen-fill" role="button" (click)="onEdit(task)"></i></td>
+            <td><i class="bi bi-trash" role="button" (click)="onDelete(task.id)"></i></td>
+        </tr>
+    </tbody>
+</table>

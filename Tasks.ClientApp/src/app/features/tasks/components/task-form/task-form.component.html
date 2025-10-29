@@ -1,0 +1,22 @@
+<h2>{{task ? 'Update Task' : 'Add Task'}}</h2>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="from-group mt-5">
+    <p>Task description</p>
+    <input type="text" formControlName="description" class="form-control">
+    <div *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched">
+        <div *ngIf="taskForm.get('description')?.errors?.['required']">
+            <p class="text-error">Description is required</p>
+        </div>
+    </div>
+    <p>Task status</p>
+    <select class="form-control" formControlName="isCompleted">
+        <option [ngValue]=false>To do</option>
+        <option [ngValue]=true>Completed</option>
+    </select>
+        <div *ngIf="taskForm.get('isCompleted')?.invalid && taskForm.get('isCompleted')?.touched">
+        <div *ngIf="taskForm.get('isCompleted')?.errors?.['required']">
+            <p class="text-error">Status is required</p>
+        </div>
+    </div>
+    <button [disabled]="taskForm.invalid" type="submit" class="btn btn-primary">submit</button>
+    <button  type="button" class="btn btn-primary" (click)="onCancel()">cancel</button>
+</form>
