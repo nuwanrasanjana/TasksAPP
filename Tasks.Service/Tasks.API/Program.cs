@@ -10,6 +10,7 @@ using Tasks.Domain.DTOs;
 using Tasks.Application.DTOs;
 using Tasks.Application.Validators;
 using Tasks.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Tasks.API
 {
@@ -31,6 +32,11 @@ namespace Tasks.API
 
             builder.Services.AddScoped<IValidator<CreateTaskItemDTO>, CreateTaskDTOValidator>();
             builder.Services.AddScoped<IValidator<TaskItem>, TaskItemValidator>();
+            builder.Services.AddScoped<IValidator<LoginRequest>, LoginRequestValidator>();
+            builder.Services.AddScoped<IValidator<RegisterRequest>, RegisterRequestValidator>();
+            builder.Services.AddScoped<IPasswordHasher<User>,PasswordHasher<User>>();
+            builder.Services.AddScoped<IUserService,UserService>();
+            builder.Services.AddScoped<IUserRepository,UserRepository>();
             //builder.Services.AddFluentValidationAutoValidation(); // Enables auto validation
 
             builder.Services.AddCors(options =>

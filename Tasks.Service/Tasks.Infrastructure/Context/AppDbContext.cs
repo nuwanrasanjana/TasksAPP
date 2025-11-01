@@ -14,6 +14,7 @@ namespace Tasks.Infrastructure.Context
         {
             
         }
-        DbSet<TaskItem> TaskItems { get; set; }
+        public DbSet<TaskItem> TaskItems { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
