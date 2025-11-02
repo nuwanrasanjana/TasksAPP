@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskItem } from '../../../../core/models/task.model';
 import { NgFor } from '@angular/common';
 import { TaskService } from '../../services/task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -14,11 +15,12 @@ export class TaskListComponent {
   @Output() editTask = new EventEmitter<TaskItem>()
   @Output() refresh = new EventEmitter<void>()
   @Output() successAlert = new EventEmitter<boolean>()
-  constructor(private taskService: TaskService){
+  constructor(private taskService: TaskService, private router: Router){
 
   }
 
   onEdit(task:TaskItem){
+    this.router.navigate(['/tasks', task.id]);
     this.editTask.emit(task)
 
   }
